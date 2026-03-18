@@ -1,9 +1,10 @@
-public class No {
+public class NoArvore {
     private String valor;
     private int altura;
-    private No esq, dir;
+    private NoArvore esq, dir;
+    private String hash;
 
-    public No(String valor) {
+    public NoArvore(String valor) {
         this.valor = valor;
     }
 
@@ -19,19 +20,19 @@ public class No {
         this.altura = altura;
     }
 
-    public No getEsq() {
+    public NoArvore getEsq() {
         return esq;
     }
 
-    public void setEsq(No esq) {
+    public void setEsq(NoArvore esq) {
         this.esq = esq;
     }
 
-    public No getDir() {
+    public NoArvore getDir() {
         return dir;
     }
 
-    public void setDir(No dir) {
+    public void setDir(NoArvore dir) {
         this.dir = dir;
     }
 }
