@@ -1,8 +1,8 @@
-public class NoLista {
+public class ListaNo {
     private String valor;
-    private NoLista proximo, anterior;
+    private ListaNo proximo, anterior;
 
-    public NoLista(String valor) {
+    public ListaNo(String valor) {
         this.valor = valor;
     }
 
@@ -10,19 +10,19 @@ public class NoLista {
         return valor;
     }
 
-    public NoLista getAnterior() {
+    public ListaNo getAnterior() {
         return anterior;
     }
 
-    public void setAnterior(NoLista anterior) {
+    public void setAnterior(ListaNo anterior) {
         this.anterior = anterior;
     }
 
-    public NoLista getProximo() {
+    public ListaNo getProximo() {
         return proximo;
     }
 
-    public void setProximo(NoLista proximo) {
+    public void setProximo(ListaNo proximo) {
         this.proximo = proximo;
     }
 }

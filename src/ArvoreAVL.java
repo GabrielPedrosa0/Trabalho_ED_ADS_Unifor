@@ -1,5 +1,5 @@
 public class ArvoreAVL {
-    NoArvore raiz;
+    ArvoreAVLNo raiz;
     int tamanho;
 
     public ArvoreAVL() {
@@ -17,9 +17,9 @@ public class ArvoreAVL {
         return gerarHashArvore(this.raiz);
     }
 
-    private NoArvore insercaoRecursiva(NoArvore atual, String valor) {
+    private ArvoreAVLNo insercaoRecursiva(ArvoreAVLNo atual, String valor) {
         if (atual == null) {
-            NoArvore novo = new NoArvore(valor);
+            ArvoreAVLNo novo = new ArvoreAVLNo(valor);
             novo.setAltura(1);
             return novo;
         }
@@ -57,16 +57,16 @@ public class ArvoreAVL {
 
     }
 
-    private int altura(NoArvore no) {
+    private int altura(ArvoreAVLNo no) {
         return no == null ? 0 : no.getAltura();
     }
 
-    private int calcularAltura(NoArvore no) {
+    private int calcularAltura(ArvoreAVLNo no) {
         return Math.max(altura(no.getEsq()), altura(no.getDir())) + 1;
     }
 
-    private NoArvore rotacaoDireita(NoArvore antigaRaiz) {
-        NoArvore novaRaiz = antigaRaiz.getEsq();
+    private ArvoreAVLNo rotacaoDireita(ArvoreAVLNo antigaRaiz) {
+        ArvoreAVLNo novaRaiz = antigaRaiz.getEsq();
         antigaRaiz.setEsq(novaRaiz.getDir());
         novaRaiz.setDir(antigaRaiz);
         antigaRaiz.setAltura(calcularAltura(antigaRaiz));
@@ -74,8 +74,8 @@ public class ArvoreAVL {
         return novaRaiz;
     }
 
-    private NoArvore rotacaoEsquerda(NoArvore antigaRaiz) {
-        NoArvore novaRaiz = antigaRaiz.getDir();
+    private ArvoreAVLNo rotacaoEsquerda(ArvoreAVLNo antigaRaiz) {
+        ArvoreAVLNo novaRaiz = antigaRaiz.getDir();
         antigaRaiz.setDir(novaRaiz.getEsq());
         novaRaiz.setEsq(antigaRaiz);
         antigaRaiz.setAltura(calcularAltura(antigaRaiz));
@@ -83,7 +83,7 @@ public class ArvoreAVL {
         return novaRaiz;
     }
 
-    private String gerarHashArvore(NoArvore no) {
+    private String gerarHashArvore(ArvoreAVLNo no) {
         if (no == null)
             return "";
 
