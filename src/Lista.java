@@ -1,27 +1,37 @@
 public class Lista {
-    ListaNo cabeca, rabo;
+    private ListaNo cabeca, rabo;
+    private int tamanho;
 
-    public ListaNo inserirNo(String valor) {
-        this.cabeca = this.insercaoRecursiva(this.cabeca, valor);
-        return this.cabeca;
+    public Lista() {
+        this.cabeca = null;
+        this.rabo = null;
+        this.tamanho = 0;
     }
 
-    private ListaNo insercaoRecursiva(ListaNo no, String valor) {
+    public void inserirNoFinal(String valor) {
         ListaNo novoNo = new ListaNo(valor);
 
         if (cabeca == null) {
             this.cabeca = novoNo;
             this.rabo = novoNo;
-            return this.cabeca;
-        }
-
-        if (no == null) {
+        } else {
+            rabo.setProximo(novoNo);
+            novoNo.setAnterior(rabo);
             this.rabo = novoNo;
-            return novoNo;
+        }
+        tamanho++;
+    }
+
+    public String[] getPalavrasOrdemInversa() {
+        String[] palavras = new String[tamanho];
+        ListaNo atual = rabo;
+        int indice = 0;
+
+        while (atual != null) {
+            palavras[indice++] = atual.getValor();
+            atual = atual.getAnterior();
         }
 
-        no.setProximo(insercaoRecursiva(no, valor));
-
-        return no;
+        return palavras;
     }
 }
