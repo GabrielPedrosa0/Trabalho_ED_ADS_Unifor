@@ -14,21 +14,25 @@ public class ArvoreAVL {
     public String getHashArvore() {
         if (this.raiz == null)
             return null;
-        return gerarHashArvore(this.raiz);
+
+        String hash = gerarHashArvore(this.raiz);
+        return hash != null ? hash : "";
     }
 
     private ArvoreAVLNo insercaoRecursiva(ArvoreAVLNo atual, String valor) {
         if (atual == null) {
             ArvoreAVLNo novo = new ArvoreAVLNo(valor);
             novo.setAltura(1);
+            tamanho++;
             return novo;
         }
 
-        if (valor.compareToIgnoreCase(atual.getValor()) == 0) {
+        int cmp = valor.compareToIgnoreCase(atual.getValor());
+        if (cmp == 0) {
             return atual;
         }
 
-        if (valor.compareToIgnoreCase(atual.getValor()) < 0) {
+        if (cmp < 0) {
             atual.setEsq(insercaoRecursiva(atual.getEsq(), valor));
         } else {
             atual.setDir(insercaoRecursiva(atual.getDir(), valor));
@@ -37,24 +41,20 @@ public class ArvoreAVL {
         atual.setAltura(calcularAltura(atual));
 
         int balanceamento = altura(atual.getEsq()) - altura(atual.getDir());
+
         if (balanceamento > 1) {
-            if (altura(atual.getEsq().getEsq()) < altura(atual.getEsq().getDir())) {
-                // rodar esquerda
-                rotacaoEsquerda(atual.getEsq());
+            if (altura(atual.getEsq().getDir()) > altura(atual.getEsq().getEsq())) {
+                atual.setEsq(rotacaoEsquerda(atual.getEsq()));
             }
-            // rodar direita
-            rotacaoDireita(atual);
-
+            atual = rotacaoDireita(atual);
         } else if (balanceamento < -1) {
-            if (altura(atual.getDir().getDir()) < altura(atual.getDir().getEsq())) {
-                // rodar direita
-                rotacaoDireita(atual.getDir());
+            if (altura(atual.getDir().getEsq()) > altura(atual.getDir().getDir())) {
+                atual.setDir(rotacaoDireita(atual.getDir()));
             }
-            // rodar esquerda
-            rotacaoEsquerda(atual);
+            atual = rotacaoEsquerda(atual);
         }
-        return atual;
 
+        return atual;
     }
 
     private int altura(ArvoreAVLNo no) {
@@ -85,15 +85,22 @@ public class ArvoreAVL {
 
     private String gerarHashArvore(ArvoreAVLNo no) {
         if (no == null)
-            return "";
+            return null;
 
         String hashEsq = gerarHashArvore(no.getEsq());
         String hashDir = gerarHashArvore(no.getDir());
 
+        String combinado = "";
+        if (hashEsq != null)
+            combinado += hashEsq;
+        if (hashDir != null)
+            combinado += hashDir;
+        combinado += no.getValor();
+
         try {
-            return HasheadorString.sha1(hashEsq + hashDir + no.getValor());
+            return HasheadorString.sha1(combinado);
         } catch (Exception e) {
-            return "";
+            return null;
         }
     }
 }
