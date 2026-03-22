@@ -25,4 +25,9 @@ public class ListaNo {
     public void setProximo(ListaNo proximo) {
         this.proximo = proximo;
     }
+
+    @Override
+    public String toString() {
+        return String.format("[ListaNo: valor='%s']", valor);
+    }
 }

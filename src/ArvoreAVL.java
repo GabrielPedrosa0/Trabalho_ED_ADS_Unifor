@@ -103,4 +103,27 @@ public class ArvoreAVL {
             return null;
         }
     }
+
+    @Override
+    public String toString() {
+        if (raiz == null) {
+            return "ArvoreAVL: [vazia]";
+        }
+        return "ArvoreAVL: [raiz=" + raiz.getValor() + ", tamanho=" + tamanho + ", estrutura=" + imprimirArvore(raiz, 0)
+                + "]";
+    }
+
+    private String imprimirArvore(ArvoreAVLNo no, int nivel) {
+        if (no == null) {
+            return "null";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("(").append(no.getValor());
+        if (no.getEsq() != null || no.getDir() != null) {
+            sb.append(" -> [E:").append(imprimirArvore(no.getEsq(), nivel + 1)).append(", D:")
+                    .append(imprimirArvore(no.getDir(), nivel + 1)).append("]");
+        }
+        sb.append(")");
+        return sb.toString();
+    }
 }

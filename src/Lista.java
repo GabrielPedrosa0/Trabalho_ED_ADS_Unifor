@@ -34,4 +34,27 @@ public class Lista {
 
         return palavras;
     }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+
+    @Override
+    public String toString() {
+        if (cabeca == null) {
+            return "Lista: []";
+        }
+
+        StringBuilder sb = new StringBuilder("Lista: [");
+        ListaNo atual = cabeca;
+        while (atual != null) {
+            sb.append("'").append(atual.getValor()).append("'");
+            if (atual.getProximo() != null) {
+                sb.append(", ");
+            }
+            atual = atual.getProximo();
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 }

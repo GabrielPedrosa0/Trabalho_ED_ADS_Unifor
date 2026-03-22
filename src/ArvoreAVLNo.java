@@ -34,4 +34,9 @@ public class ArvoreAVLNo {
     public void setDir(ArvoreAVLNo dir) {
         this.dir = dir;
     }
+
+    @Override
+    public String toString() {
+        return String.format("[ArvoreAVLNo: valor='%s', altura=%d]", valor, altura);
+    }
 }

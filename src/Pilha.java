@@ -31,4 +31,24 @@ public class Pilha {
     public boolean isEmpty() {
         return topo == -1;
     }
+
+    public int getTamanho() {
+        return topo + 1;
+    }
+
+    @Override
+    public String toString() {
+        if (isEmpty()) {
+            return "Pilha: [vazia]";
+        }
+        StringBuilder sb = new StringBuilder("Pilha: [tamanho=").append(getTamanho()).append(", topo=[");
+        for (int i = topo; i >= 0; i--) {
+            sb.append(pilha[i].raiz != null ? pilha[i].raiz.getValor() : "null");
+            if (i > 0) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]]");
+        return sb.toString();
+    }
 }

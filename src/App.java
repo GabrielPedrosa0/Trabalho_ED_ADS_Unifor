@@ -5,6 +5,7 @@ public class App {
     private static final String CAMINHO_ARQUIVO = "bin/texto.txt";
 
     public static void main(String[] args) {
+        System.out.println("=== Autenticador de Documentos ===\n");
 
         List<String> linhas = LeitorArquivo.lerArquivo(CAMINHO_ARQUIVO);
 
@@ -13,12 +14,19 @@ public class App {
             return;
         }
 
+        System.out.println(">> Arquivo lido com sucesso: " + linhas.size() + " linhas encontradas\n");
+
         Pilha pilhaArvores = new Pilha(linhas.size());
+        int numeroLinha = 0;
 
         for (String linha : linhas) {
             if (linha.trim().isEmpty()) {
                 continue;
             }
+            numeroLinha++;
+
+            System.out.println("=== Linha " + numeroLinha + " ===");
+            System.out.println("Texto original: \"" + linha + "\"");
 
             List<String> palavras = LeitorArquivo.extrairPalavras(linha);
 
@@ -27,27 +35,40 @@ public class App {
                 continue;
             }
 
+            System.out.println("Palavras extraídas: " + String.join(", ", palavras));
+
             Lista lista = new Lista();
             for (String palavra : palavras) {
                 lista.inserirNoFinal(palavra);
             }
+            System.out.println(">> Lista (ordem de leitura): " + lista);
 
             String[] palavrasOrdemInversa = lista.getPalavrasOrdemInversa();
+            System.out.println(">> Lista (ordem inversa): [" + String.join(", ", palavrasOrdemInversa) + "]");
 
             ArvoreAVL arvore = new ArvoreAVL();
             for (String palavra : palavrasOrdemInversa) {
                 arvore.inserirNo(palavra);
             }
+            System.out.println(">> " + arvore);
 
             pilhaArvores.push(arvore);
+            System.out.println(">> " + pilhaArvores);
+            System.out.println();
         }
 
+        System.out.println("=== Códigos de Autenticação ===\n");
+
+        int numeroHash = 0;
         while (!pilhaArvores.isEmpty()) {
+            numeroHash++;
             ArvoreAVL arvore = pilhaArvores.pop();
             String hash = arvore.getHashArvore();
             if (hash != null) {
-                System.out.println(hash);
+                System.out.println("Hash " + numeroHash + ": " + hash);
             }
         }
+
+        System.out.println("\n=== Autenticação Concluída ===");
     }
 }
