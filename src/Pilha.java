@@ -12,10 +12,10 @@ public class Pilha {
     public void push(ArvoreAVL arvore) {
         if (topo == tamanho - 1) {
             System.out.println("Pilha cheia");
+            return;
         }
         topo++;
         pilha[topo] = arvore;
-        System.out.println("Arvore inserida na pilha");
     }
 
     public ArvoreAVL pop() {
