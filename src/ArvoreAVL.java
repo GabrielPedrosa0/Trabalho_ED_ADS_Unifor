@@ -95,10 +95,14 @@ public class ArvoreAVL {
             combinado += hashEsq;
         if (hashDir != null)
             combinado += hashDir;
-        combinado += no.getValor();
 
         try {
-            return HasheadorString.sha1(combinado);
+            String hashAtual = HasheadorString.sha1(no.getValor());
+            if (combinado != "") {
+                combinado += hashAtual;
+                return HasheadorString.sha1(combinado);
+            }
+            return hashAtual;
         } catch (Exception e) {
             return null;
         }
