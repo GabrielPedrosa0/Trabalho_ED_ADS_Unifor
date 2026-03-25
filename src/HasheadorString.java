@@ -2,12 +2,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class HasheadorString{
-    static String sha1(String entrada){
+    public static String sha1(String entrada){
         try{
-            MessageDigest algoritimo = MessageDigest.getInstance("SHA-1");
+            MessageDigest algoritmo = MessageDigest.getInstance("SHA-1");
 
             byte[] bytesE = entrada.getBytes("UTF-8");
-            byte[] bytesH = algoritimo.digest(bytesE);
+            byte[] bytesH = algoritmo.digest(bytesE);
 
             StringBuilder hexadecimal = new StringBuilder();
 
