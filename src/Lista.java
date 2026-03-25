@@ -1,37 +1,46 @@
 public class Lista {
-    private ListaNo cabeca, rabo;
+    private No head, tail;
     private int tamanho;
 
     public Lista() {
-        this.cabeca = null;
-        this.rabo = null;
+        this.head = null;
+        this.tail = null;
         this.tamanho = 0;
     }
 
-    public void inserirNoFinal(String valor) {
-        ListaNo novoNo = new ListaNo(valor);
+    public void inserir(String palavra) {
+        No novoNo = new No(palavra);
 
-        if (cabeca == null) {
-            this.cabeca = novoNo;
-            this.rabo = novoNo;
+        if (head == null) {
+            this.head = novoNo;
+            this.tail = novoNo;
         } else {
-            rabo.setProximo(novoNo);
-            novoNo.setAnterior(rabo);
-            this.rabo = novoNo;
+            tail.setProximo(novoNo);
+            novoNo.setAnterior(tail);
+            this.tail = novoNo;
         }
         tamanho++;
     }
 
     public String[] getPalavrasOrdemInversa() {
         String[] palavras = new String[tamanho];
-        ListaNo atual = rabo;
+        No atual = tail;
         int indice = 0;
 
         while (atual != null) {
-            palavras[indice++] = atual.getValor();
+            palavras[indice++] = atual.getPalavra();
             atual = atual.getAnterior();
         }
 
         return palavras;
     }
+
+    // public void inserirNaAVL(ArvoreAVL avl){
+    //     No atual = tail;
+
+    //     while(atual != null){
+    //         avl.inserirNo(atual.getPalavra());
+    //         atual = atual.getAnterior();
+    //     }
+    // }
 }

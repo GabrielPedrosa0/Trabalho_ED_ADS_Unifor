@@ -29,7 +29,7 @@ public class App {
 
             Lista lista = new Lista();
             for (String palavra : palavras) {
-                lista.inserirNoFinal(palavra);
+                lista.inserir(palavra);
             }
 
             String[] palavrasOrdemInversa = lista.getPalavrasOrdemInversa();
