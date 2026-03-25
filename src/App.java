@@ -2,7 +2,7 @@ import java.util.List;
 
 public class App {
 
-    private static final String CAMINHO_ARQUIVO = "bin/texto.txt";
+    private static final String CAMINHO_ARQUIVO = "src/texto.txt";
 
     public static void main(String[] args) {
 
