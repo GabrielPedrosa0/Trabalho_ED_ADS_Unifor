@@ -1,8 +1,8 @@
-public class No {
+public class ListaNo {
     private String palavra;
-    private No proximo, anterior;
+    private ListaNo proximo, anterior;
 
-    public No(String palavra) {
+    public ListaNo(String palavra) {
         this.palavra = palavra;
     }
 
@@ -10,19 +10,19 @@ public class No {
         return palavra;
     }
 
-    public No getAnterior() {
+    public ListaNo getAnterior() {
         return anterior;
     }
 
-    public void setAnterior(No anterior) {
+    public void setAnterior(ListaNo anterior) {
         this.anterior = anterior;
     }
 
-    public No getProximo() {
+    public ListaNo getProximo() {
         return proximo;
     }
 
-    public void setProximo(No proximo) {
+    public void setProximo(ListaNo proximo) {
         this.proximo = proximo;
     }
 }
