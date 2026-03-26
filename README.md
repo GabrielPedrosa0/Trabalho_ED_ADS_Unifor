@@ -20,20 +20,24 @@ Para a correta autenticação de cada documento `.txt` iterado linha a linha, o 
 6. **Desempilhamento e Saída:** Ao finalizar a leitura de todo o arquivo, cada árvore depositada na Pilha é desempilhada, e seu hash principal (gerado a partir da Raiz da AVL) é revelado, compondo a assinatura final do documento separada por quebras de linha.
 
 ## 🛠️ Tecnologias
-- Java (JDK 8 ou superior)
+- Java (JDK 8 ou superior, testado com OpenJDK 11)
 - Tratamento de funções Criptográficas (SHA-1 via `java.security.MessageDigest`)
 
 ## 📂 Estrutura do Projeto
 - `src/App.java` - O Controlador principal que roda o motor do software.
 - `src/HasheadorString.java` - Utilitário estático produtor de strings SHA-1.
 - `src/ArvoreAVL.java` - A estrutura da árvore binária balanceada com travessia pós-ordem.
-- `src/No.java` - Nó que compõe as folhas da estrutura de árvore.
+- `src/ArvoreAVLNo.java` - Nó que compõe as folhas da estrutura de árvore.
+- `scr/Lista.java` - Lista duplamente encadeada que armazena as palavras extraídas de cada linha, permitindo recuperá-las em ordem inversa para inserção na Árvore AVL.
+- `scr/ListaNo.java` - Nó que compõe a Lista Dinâmica, contendo o valor da palavra e referências para os elementos anterior e próximo.
+- `src/Pilha.java` - Estrutura LIFO de tamanho fixo responsável por empilhar as Àrvores AVL geradas a cada Linha, para posterior desempilhamento e exibição dos hashes.
+- `src/LeitorArquivo.java` - Utilitário de leitura do arquivo `.txt` linha a linha e extração de palavras, removendo pontuações e espaços desnecessários.
 
 
 ## 📖 Como Executar (Versão Final)
 
 1. Clone este repositório no seu ambiente de preferência (`git clone`).
-2. Adicione ou modifique o arquivo base de teste (`bin/texto.txt`) contendo a massa textual que deseja validar.
+2. Adicione ou modifique o arquivo base de teste (`src/texto.txt`) contendo a massa textual que deseja validar.
 3. Compile o software rodando `javac -d bin src/*.java` no terminal.
 4. Execute o validador com `java -cp bin App`.
 
@@ -48,6 +52,7 @@ Este repositório contém a **estrutura inicial** e parte do motor principal do 
 
 ## 👨‍💻 Equipe
 - *Arthur Honorio*
+- *Gabriel Pedrosa*
 - *(Insira o seu nome aqui após subir sua parte!)*
 
 ---

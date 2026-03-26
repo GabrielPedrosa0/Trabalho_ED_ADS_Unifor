@@ -8,7 +8,7 @@ public class Lista {
         this.tamanho = 0;
     }
 
-    public void inserirNoFinal(String valor) {
+    public void inserir(String valor) {
         ListaNo novoNo = new ListaNo(valor);
 
         if (cabeca == null) {
@@ -28,7 +28,7 @@ public class Lista {
         int indice = 0;
 
         while (atual != null) {
-            palavras[indice++] = atual.getValor();
+            palavras[indice++] = atual.getPalavra();
             atual = atual.getAnterior();
         }
 

@@ -1,13 +1,13 @@
 public class ListaNo {
-    private String valor;
+    private String palavra;
     private ListaNo proximo, anterior;
 
-    public ListaNo(String valor) {
-        this.valor = valor;
+    public ListaNo(String palavra) {
+        this.palavra = palavra;
     }
 
-    public String getValor() {
-        return valor;
+    public String getPalavra() {
+        return palavra;
     }
 
     public ListaNo getAnterior() {

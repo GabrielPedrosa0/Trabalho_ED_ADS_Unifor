@@ -2,7 +2,7 @@ import java.util.List;
 
 public class App {
 
-    private static final String CAMINHO_ARQUIVO = "bin/texto.txt";
+    private static final String CAMINHO_ARQUIVO = "src/texto.txt";
 
     public static void main(String[] args) {
         System.out.println("=== Autenticador de Documentos ===\n");
@@ -39,7 +39,7 @@ public class App {
 
             Lista lista = new Lista();
             for (String palavra : palavras) {
-                lista.inserirNoFinal(palavra);
+                lista.inserir(palavra);
             }
             System.out.println(">> Lista (ordem de leitura): " + lista);
 
