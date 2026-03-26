@@ -1,10 +1,10 @@
 public class Lista {
-    private ListaNo cabeca, rabo;
+    private ListaNo cabeca, cauda;
     private int tamanho;
 
     public Lista() {
         this.cabeca = null;
-        this.rabo = null;
+        this.cauda = null;
         this.tamanho = 0;
     }
 
@@ -13,18 +13,18 @@ public class Lista {
 
         if (cabeca == null) {
             this.cabeca = novoNo;
-            this.rabo = novoNo;
+            this.cauda = novoNo;
         } else {
-            rabo.setProximo(novoNo);
-            novoNo.setAnterior(rabo);
-            this.rabo = novoNo;
+            cauda.setProximo(novoNo);
+            novoNo.setAnterior(cauda);
+            this.cauda = novoNo;
         }
         tamanho++;
     }
 
     public String[] getPalavrasOrdemInversa() {
         String[] palavras = new String[tamanho];
-        ListaNo atual = rabo;
+        ListaNo atual = cauda;
         int indice = 0;
 
         while (atual != null) {
