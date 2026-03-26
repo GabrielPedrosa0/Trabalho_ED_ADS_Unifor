@@ -48,7 +48,7 @@ public class Lista {
         StringBuilder sb = new StringBuilder("Lista: [");
         ListaNo atual = cabeca;
         while (atual != null) {
-            sb.append("'").append(atual.getValor()).append("'");
+            sb.append("'").append(atual.getPalavra()).append("'");
             if (atual.getProximo() != null) {
                 sb.append(", ");
             }

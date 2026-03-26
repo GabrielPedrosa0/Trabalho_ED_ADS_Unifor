@@ -28,6 +28,6 @@ public class ListaNo {
 
     @Override
     public String toString() {
-        return String.format("[ListaNo: valor='%s']", valor);
+        return String.format("[ListaNo: valor='%s']", this.palavra);
     }
 }
